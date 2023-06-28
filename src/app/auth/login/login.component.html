@@ -1,0 +1,17 @@
+<div class="login">
+    <form class="form" [formGroup]="authForm" (ngSubmit)="onSubmit()">
+        <div class="form__wrapper">
+            <h2 class="form__title">Login</h2>
+            <div class="form__group">
+                <label class="form__group-label" for="email">E-mail</label>
+                <input formControlName="email" class="form__group-control" type="email" id="email">
+            </div>
+            <div class="form__group">
+                <label class="form__group-label" for="password">Password</label>
+                <input formControlName="password" class="form__group-control" type="password" id="password">
+            </div>
+            <button type="submit" class="form__button">Login</button>
+            <p class="form__desc">Don’t have accound? <a class="form__link" href="#">Signup</a> </p>
+        </div>
+    </form>
+</div>

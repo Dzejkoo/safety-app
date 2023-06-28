@@ -1,0 +1,76 @@
+@use "./colors.scss" as colors;
+
+@mixin auth-user {
+  width: 100%;
+  height: calc(100vh - 74px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 10px;
+  .form {
+    width: 100%;
+    max-width: 290px;
+    padding: 40px 30px;
+    background-color: colors.$black;
+    border-radius: 8px;
+    &__wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    &__title {
+      font-size: 40px;
+      font-weight: 200;
+      color: colors.$text;
+      padding-bottom: 30px;
+    }
+    &__group {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      max-width: 220px;
+      padding-bottom: 15px;
+      &-control {
+        background: colors.$text;
+        padding: 10px;
+        border-radius: 5px;
+        transition: all 0.3s ease-in-out;
+        border-color: transparent;
+        outline: none;
+        &:focus {
+          background-color: white;
+        }
+      }
+
+      &-label {
+        color: colors.$text;
+        font-weight: 100;
+        font-size: 13px;
+        padding-bottom: 4px;
+        letter-spacing: 1px;
+      }
+    }
+    &__button {
+      border: 0;
+      background-color: colors.$yellow;
+      padding: 6px 20px;
+      font-size: 15px;
+      font-weight: 300;
+      color: colors.$black;
+      border-radius: 5px;
+      font-family: "Kanit", sans-serif;
+      margin-top: 10px;
+    }
+    &__desc {
+      font-size: 15px;
+      color: colors.$text;
+      font-weight: 100;
+      margin-top: 35px;
+    }
+    &__link {
+      color: colors.$yellow;
+      font-weight: 300;
+    }
+  }
+}
