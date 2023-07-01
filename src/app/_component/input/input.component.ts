@@ -1,10 +1,4 @@
-import {
-  animate,
-  state,
-  style,
-  transition,
-  trigger,
-} from '@angular/animations';
+import { NgIf } from '@angular/common';
 import { Component, Input, OnInit, forwardRef } from '@angular/core';
 import {
   ControlValueAccessor,
@@ -17,6 +11,8 @@ import {
   selector: 'app-input',
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss'],
+  standalone: true,
+  imports: [NgIf],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

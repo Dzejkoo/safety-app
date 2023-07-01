@@ -68,14 +68,15 @@
     &__button {
       border: 0;
       background-color: colors.$yellow;
-      padding: 6px 20px;
+      height: 40px;
       width: 100%;
       font-size: 15px;
       font-weight: 300;
       color: colors.$black;
       border-radius: 5px;
       font-family: "Kanit", sans-serif;
-      margin: 15px 0;
+      margin: 20px 0;
+      position: relative;
       cursor: pointer;
     }
     &__desc {

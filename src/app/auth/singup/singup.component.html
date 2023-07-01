@@ -9,7 +9,8 @@
                 [parentFormGroup]="authForm"></app-input>
             <app-input formControlName="password" label="Password" type="password" fieldName="password"
                 [parentFormGroup]="authForm"></app-input>
-            <button type="submit" class="form__button">Singup</button>
+            <button type="submit" class="form__button"><app-spinner *ngIf="loading"></app-spinner><span
+                    *ngIf="!loading">Signup</span></button>
             <p class="form__desc">Already have an account <a class="form__link" routerLink="/login">Login</a> </p>
         </div>
     </form>

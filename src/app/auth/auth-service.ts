@@ -22,7 +22,16 @@ export class AuthService {
         `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${API_KEY}`,
         signupData
       )
-      .pipe(catchError((erroRes) => this._handleError(erroRes)));
+      .pipe(catchError((errorRes) => this._handleError(errorRes)));
+  }
+
+  login(loginData: { email: string; password: string }) {
+    return this._http
+      .post(
+        `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${API_KEY}`,
+        loginData
+      )
+      .pipe(catchError((errorRes) => this._handleError(errorRes)));
   }
 
   private _handleError(errorRes: HttpErrorResponse) {
