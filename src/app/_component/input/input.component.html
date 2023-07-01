@@ -1,0 +1,12 @@
+<div class="input">
+    <div class="input__wrapper">
+        <input [type]="type" [value]="value" (input)="change($event)" (blur)="onTouched()" [disabled]="isDisabled"
+            class="input__control">
+        <label [class.input__label--not-empty]="valueChange" class="input__label">{{label}}</label>
+    </div>
+    <div class="input__error">
+        <span *ngIf="formField.touched && formField.hasError('required')">This is
+            required
+            field.</span>
+    </div>
+</div>

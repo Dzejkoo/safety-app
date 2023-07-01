@@ -1,0 +1,64 @@
+@use "../../../style/colors.scss" as colors;
+:host {
+  display: block;
+  &.ng-touched.ng-invalid {
+    .input__control {
+      border-bottom: 1px solid colors.$errorRed;
+    }
+  }
+}
+
+.input {
+  width: 100%;
+  padding-bottom: 10px;
+  &__wrapper {
+    box-sizing: border-box;
+    position: relative;
+  }
+  &__label {
+    position: absolute;
+    top: 50%;
+    left: 0px;
+    transform: translateY(-50%);
+    color: colors.$black;
+    color: white;
+    font-weight: 100;
+    transition: all 0.2s ease;
+    &--not-empty {
+      transition: all 0.2s ease;
+      top: 0;
+      font-size: 10px;
+    }
+  }
+  &__error {
+    color: colors.$errorRed;
+    font-size: 13px;
+    font-weight: 100;
+    height: 20px;
+    position: relative;
+
+    span {
+      position: absolute;
+      top: 50%;
+      left: 0;
+    }
+  }
+  &__control {
+    border-color: transparent;
+    border-bottom: 1px solid colors.$yellow;
+    background-color: transparent;
+    outline: none;
+    width: 100%;
+    color: white;
+    font-size: 15px;
+    padding: 15px 0;
+    &:focus ~ .input__label {
+      top: 0;
+      font-size: 10px;
+      transition: all 0.2s ease;
+    }
+    &.ng-touched {
+      border: 1px solid colors.$errorRed;
+    }
+  }
+}

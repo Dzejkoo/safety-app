@@ -7,41 +7,55 @@
   align-items: center;
   justify-content: center;
   padding-bottom: 10px;
+
   .form {
     width: 100%;
-    max-width: 290px;
+    max-width: 320px;
     padding: 40px 30px;
-    background-color: colors.$black;
     border-radius: 8px;
+
+    &__error {
+      width: 100%;
+      color: white;
+      box-sizing: border-box;
+      background-color: colors.$errorRed;
+      padding: 20px 15px;
+      border-radius: 5px;
+      font-weight: 300;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      column-gap: 10px;
+      margin: 24px 0 30px 0;
+      &-icon {
+        width: 5px;
+      }
+    }
     &__wrapper {
       display: flex;
       flex-direction: column;
-      align-items: center;
       justify-content: center;
     }
     &__title {
       font-size: 40px;
-      font-weight: 200;
-      color: colors.$text;
-      padding-bottom: 30px;
+      font-weight: 400;
+      color: white;
+      margin-bottom: 10px;
+      &-desc {
+        font-size: 15px;
+        color: white;
+        font-weight: 100;
+        margin-bottom: 25px;
+        &--error {
+          margin-bottom: 0;
+        }
+      }
     }
     &__group {
       display: flex;
       flex-direction: column;
       width: 100%;
-      max-width: 220px;
       padding-bottom: 15px;
-      &-control {
-        background: colors.$text;
-        padding: 10px;
-        border-radius: 5px;
-        transition: all 0.3s ease-in-out;
-        border-color: transparent;
-        outline: none;
-        &:focus {
-          background-color: white;
-        }
-      }
 
       &-label {
         color: colors.$text;
@@ -55,22 +69,26 @@
       border: 0;
       background-color: colors.$yellow;
       padding: 6px 20px;
+      width: 100%;
       font-size: 15px;
       font-weight: 300;
       color: colors.$black;
       border-radius: 5px;
       font-family: "Kanit", sans-serif;
-      margin-top: 10px;
+      margin: 15px 0;
+      cursor: pointer;
     }
     &__desc {
       font-size: 15px;
       color: colors.$text;
       font-weight: 100;
-      margin-top: 35px;
+
+      margin: 0 auto;
     }
     &__link {
       color: colors.$yellow;
       font-weight: 300;
+      cursor: pointer;
     }
   }
 }

@@ -13,6 +13,8 @@ import { SingupComponent } from './auth/singup/singup.component';
 import { FooterComponent } from './_component/footer/footer.component';
 import { MainComponent } from './_pages/main/main.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { CustomInput } from './_component/input/input.component';
 
 @NgModule({
   declarations: [
@@ -25,12 +27,14 @@ import { ReactiveFormsModule } from '@angular/forms';
     SingupComponent,
     FooterComponent,
     MainComponent,
+    CustomInput,
   ],
   imports: [
     BrowserModule,
     UpperCasePipe,
     AppRoutingModule,
     ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
