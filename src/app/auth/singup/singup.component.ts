@@ -23,15 +23,20 @@ export class SingupComponent {
     this.authForm.markAllAsTouched();
     if (this.authForm.valid) {
       this.loading = true;
-      this._authService.singup(this.authForm.value).subscribe({
-        next: () => {
-          this.loading = false;
-        },
-        error: (errorMessage) => {
-          this.loading = false;
-          this.error = errorMessage;
-        },
-      });
+      this._authService
+        .singup(
+          this.authForm.controls.email.value,
+          this.authForm.controls.password.value
+        )
+        .subscribe({
+          next: () => {
+            this.loading = false;
+          },
+          error: (errorMessage) => {
+            this.loading = false;
+            this.error = errorMessage;
+          },
+        });
     }
   }
 }

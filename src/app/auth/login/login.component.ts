@@ -21,16 +21,21 @@ export class LoginComponent {
   onSubmit() {
     if (this.authForm.valid) {
       this.loading = true;
-      this._authService.login(this.authForm.value).subscribe({
-        next: (res) => {
-          this.loading = false;
-          console.log(res);
-        },
-        error: (errorMessage) => {
-          this.loading = false;
-          this.error = errorMessage;
-        },
-      });
+      this._authService
+        .login(
+          this.authForm.controls.email.value,
+          this.authForm.controls.password.value
+        )
+        .subscribe({
+          next: (res) => {
+            this.loading = false;
+            console.log(res);
+          },
+          error: (errorMessage) => {
+            this.loading = false;
+            this.error = errorMessage;
+          },
+        });
     }
   }
 }

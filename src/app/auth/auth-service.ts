@@ -1,12 +1,23 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { catchError, throwError } from 'rxjs';
+import { BehaviorSubject, catchError, tap, throwError } from 'rxjs';
+import { User } from './user.model';
 
 const API_KEY = 'AIzaSyD7vy7NGIan6qvfPxUjP6NMMsz9UQ3Z8Fk';
 
+interface AuthResposne {
+  email: string;
+  idToken: string;
+  refreshToken: string;
+  expiresIn: string;
+  localId: string;
+  registered?: boolean;
+}
+
 @Injectable({ providedIn: 'root' })
 export class AuthService {
+  user = new BehaviorSubject<User>(null);
   constructor(private _formBulider: FormBuilder, private _http: HttpClient) {}
 
   authFormInit() {
@@ -16,22 +27,53 @@ export class AuthService {
     });
   }
 
-  singup(signupData: { email: string; password: string }) {
+  singup(email: string, password: string) {
     return this._http
       .post(
         `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${API_KEY}`,
-        signupData
+        {
+          email: email,
+          password: password,
+          returnSecureToken: true,
+        }
       )
       .pipe(catchError((errorRes) => this._handleError(errorRes)));
   }
 
-  login(loginData: { email: string; password: string }) {
+  login(email: string, password: string) {
     return this._http
-      .post(
+      .post<AuthResposne>(
         `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${API_KEY}`,
-        loginData
+        {
+          email: email,
+          password: password,
+          returnSecureToken: true,
+        }
       )
-      .pipe(catchError((errorRes) => this._handleError(errorRes)));
+      .pipe(
+        tap((userAuth) =>
+          this._handleAuth(
+            userAuth.email,
+            userAuth.idToken,
+            userAuth.localId,
+            +userAuth.expiresIn
+          )
+        ),
+        catchError((errorRes) => this._handleError(errorRes))
+      );
+  }
+
+  private _handleAuth(
+    email: string,
+    token: string,
+    id: string,
+    tokenExpirationDate: number
+  ) {
+    const expirationDate = new Date(
+      new Date().getTime() + +tokenExpirationDate * 1000
+    );
+    const user = new User(email, token, id, expirationDate);
+    this.user.next(user);
   }
 
   private _handleError(errorRes: HttpErrorResponse) {
