@@ -6,9 +6,11 @@ import { UpperCasePipe } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { NavigationComponent } from './_component/navigation/navigation.component';
+import { FooterComponent } from './_component/footer/footer.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, NavigationComponent, FooterComponent],
   imports: [
     BrowserModule,
     UpperCasePipe,
