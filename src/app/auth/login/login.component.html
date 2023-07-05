@@ -2,10 +2,8 @@
     <form class="form" [formGroup]="authForm" (ngSubmit)="onSubmit()">
         <div class="form__wrapper">
             <h2 class="form__title">Login</h2>
-            <p [class.form__title-desc--error]="error" class="form__title-desc">Please eneter your details to singup</p>
-            <div class="form__error" *ngIf="error"><img class="form__error-icon"
-                    src='../../../assets/error-icon.svg'>{{error}}
-            </div>
+            <p [class.form__title-desc--error]="error" class="form__title-desc">Please eneter your details to login</p>
+            <div class="form__error" *ngIf="error">{{error}}</div>
             <app-input formControlName="email" label="E-mail" type="text" fieldName="email"
                 [parentFormGroup]="authForm"></app-input>
             <app-input formControlName="password" label="Password" type="password" fieldName="password"

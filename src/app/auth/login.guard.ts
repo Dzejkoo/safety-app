@@ -10,16 +10,16 @@ import {
 @Injectable({
   providedIn: 'root',
 })
-export class AuthGuard {
+export class LoginGuard {
   constructor(private _authService: AuthService, private _router: Router) {}
   canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     return this._authService.user.pipe(
       map((user) => {
         const isAuth = !!user;
-        if (isAuth) {
+        if (!isAuth) {
           return true;
         }
-        return this._router.createUrlTree(['/login']);
+        return this._router.createUrlTree(['']);
       })
     );
   }
