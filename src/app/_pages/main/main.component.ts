@@ -2,7 +2,6 @@ import { HeaderComponent } from './../../_component/header/header.component';
 import { Component, OnInit } from '@angular/core';
 import { MainService } from './main.service';
 import { Package } from 'src/models/strapi-data.model';
-import { Observable, shareReplay } from 'rxjs';
 import { PackagesComponent } from 'src/app/_component/packages/packages.component';
 
 @Component({
@@ -13,7 +12,7 @@ import { PackagesComponent } from 'src/app/_component/packages/packages.componen
   imports: [HeaderComponent, PackagesComponent],
 })
 export class MainComponent implements OnInit {
-  package: Package[];
+  package: Package[] = [];
   constructor(private _mainService: MainService) {}
 
   ngOnInit() {
@@ -21,8 +20,8 @@ export class MainComponent implements OnInit {
   }
 
   private _getPackagesData() {
-    this._mainService
-      .getPackages()
-      .subscribe((packageRes: Package[]) => (this.package = packageRes));
+    this._mainService.getProduct().subscribe((packageRes: Package[]) => {
+      this.package = packageRes;
+    });
   }
 }

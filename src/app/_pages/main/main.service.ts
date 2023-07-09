@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable, map } from 'rxjs';
+import { Injectable, OnInit } from '@angular/core';
+import { BehaviorSubject, Observable, Subject, map, shareReplay } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { DataFromStrapi, Package } from 'src/models/strapi-data.model';
 
@@ -8,12 +8,20 @@ import { DataFromStrapi, Package } from 'src/models/strapi-data.model';
   providedIn: 'root',
 })
 export class MainService {
-  private packages$ = new Observable<Package[]>();
-  constructor(private _http: HttpClient) {}
+  private productSubject = new BehaviorSubject<Package[]>([]);
 
-  getPackages() {
-    return (this.packages$ = this._http
+  constructor(private _http: HttpClient) {
+    this._fetchPackages();
+  }
+
+  getProduct() {
+    return this.productSubject.asObservable();
+  }
+
+  private _fetchPackages() {
+    return this._http
       .get<DataFromStrapi>(`${environment.strapiUrl}/packages`)
-      .pipe(map((resposneData) => resposneData.data)));
+      .pipe(map((resposneData) => this.productSubject.next(resposneData.data)))
+      .subscribe();
   }
 }
