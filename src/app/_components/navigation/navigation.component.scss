@@ -1,3 +1,5 @@
+@use "colors";
+
 :host {
   width: 100%;
 }
@@ -10,7 +12,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  // padding-bottom: 10px;
   &__logo {
     max-width: 60px;
     cursor: pointer;
@@ -34,6 +35,26 @@
     font-size: 14px;
     display: block;
     letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: 0.2s ease;
+    cursor: pointer;
+    &:hover {
+      color: colors.$yellow;
+    }
+    &:hover > svg {
+      path {
+        fill: colors.$yellow;
+      }
+      transition: 0.2s ease;
+      transform: translateX(5px);
+    }
+    svg {
+      transition: 0.2s ease;
+      width: 14px;
+    }
     &.active {
       color: #1e1e1e;
       background-color: #cebd63;

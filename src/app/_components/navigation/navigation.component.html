@@ -3,6 +3,12 @@
         <img src="../../../assets/logo.svg" alt="logo" />
     </h1>
     <ul class="navigation__list">
+        <li class="navigation__item">
+            <a routerLink="/" [routerLinkActiveOptions]="{exact: true}" href="#" routerLinkActive="active"
+                class="navigation__link">
+                home
+            </a>
+        </li>
         <li class="navigation__item" *ngIf="isAuth">
             <a routerLink="/sport" href="#" routerLinkActive="active" class="navigation__link">
                 sport
@@ -26,6 +32,11 @@
         <li class="navigation__item" *ngIf="isAuth">
             <a (click)="handleLogout()" routerLinkActive="active" class="navigation__link">
                 Logout
+                <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M9.97703 3.21999C10.2699 2.92667 10.7448 2.92667 11.0377 3.21999L15.2803 7.46889C15.421 7.60975 15.5 7.80079 15.5 8C15.5 8.19921 15.421 8.39025 15.2803 8.53111L11.0377 12.78C10.7448 13.0733 10.2699 13.0733 9.97703 12.78C9.68414 12.4867 9.68414 12.0111 9.97703 11.7178L12.9393 8.75111L1.75 8.75111C1.33579 8.75111 1 8.41482 1 8C1 7.58518 1.33579 7.24889 1.75 7.24889L12.9393 7.24889L9.97703 4.28222C9.68414 3.98889 9.68414 3.51332 9.97703 3.21999Z"
+                        fill="#C1BFBC" />
+                </svg>
             </a>
         </li>
     </ul>
