@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../auth-service';
-import { CustomInput } from 'src/app/_component/input/input.component';
-import { SpinnerComponent } from 'src/app/_component/spinner/spinner.component';
+import { CustomInput } from 'src/app/_components/input/input.component';
+import { SpinnerComponent } from 'src/app/_components/spinner/spinner.component';
 import { NgIf } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 

@@ -1,6 +1,6 @@
 import { Subscription } from 'rxjs';
-import { AppComponent } from './../../app.component';
-import { SingupComponent } from './../../auth/singup/singup.component';
+import { AppComponent } from '../../app.component';
+import { SingupComponent } from '../../auth/singup/singup.component';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/auth/auth-service';
 

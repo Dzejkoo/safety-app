@@ -1,0 +1,5 @@
+<div class="logo-slider">
+    <div *ngFor="let logo of logosList" class="logo-slider__wrapper">
+        <img [src]="env.strapiUrl + logo.attributes.url " alt="" />
+    </div>
+</div>
