@@ -1,16 +1,10 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BehaviorSubject, catchError, tap, throwError } from 'rxjs';
 import { User } from './user.model';
 import { Router } from '@angular/router';
-
-const API_KEY = 'AIzaSyD7vy7NGIan6qvfPxUjP6NMMsz9UQ3Z8Fk';
+import { environment } from 'src/environments/environment';
 
 interface AuthResposne {
   email: string;
@@ -40,14 +34,11 @@ export class AuthService {
 
   singup(email: string, password: string) {
     return this._http
-      .post<AuthResposne>(
-        `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${API_KEY}`,
-        {
-          email: email,
-          password: password,
-          returnSecureToken: true,
-        }
-      )
+      .post<AuthResposne>(environment.signupFirebase, {
+        email: email,
+        password: password,
+        returnSecureToken: true,
+      })
       .pipe(
         tap((userAuth) =>
           this._handleAuth(
@@ -69,14 +60,11 @@ export class AuthService {
 
   login(email: string, password: string) {
     return this._http
-      .post<AuthResposne>(
-        `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${API_KEY}`,
-        {
-          email: email,
-          password: password,
-          returnSecureToken: true,
-        }
-      )
+      .post<AuthResposne>(environment.loginFirebase, {
+        email: email,
+        password: password,
+        returnSecureToken: true,
+      })
       .pipe(
         tap((userAuth) =>
           this._handleAuth(

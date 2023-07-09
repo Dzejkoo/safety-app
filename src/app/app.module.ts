@@ -8,6 +8,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NavigationComponent } from './_component/navigation/navigation.component';
 import { FooterComponent } from './_component/footer/footer.component';
+import { PackagesComponent } from './_component/packages/packages.component';
 
 @NgModule({
   declarations: [AppComponent, NavigationComponent, FooterComponent],
