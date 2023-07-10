@@ -1,11 +1,80 @@
+@use "colors";
 .header {
   width: 100%;
   max-width: 1440px;
-  height: calc(100vh - 74px);
   margin: 0 auto;
-  max-height: 927.5px;
-  background-image: url("../../../assets/bgc.jpg");
   background-size: cover;
   border-radius: 5px;
   margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 25px;
+  &__image {
+    width: 100%;
+    height: 369px;
+    background-image: url("../../../assets/bgc.png");
+    background-position: center;
+    background-size: cover;
+    border-radius: 5px;
+  }
+  &__title {
+    display: flex;
+    flex-direction: column;
+    font-size: 100px;
+    font-size: calc(46px + (100 - 46) * ((100vw - 300px) / (1600 - 300)));
+    font-weight: 500;
+    color: white;
+  }
+  &__navigation {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  &__line {
+    flex: 1 0 300px;
+    min-width: 300px;
+    height: 1px;
+    background-color: colors.$text;
+    position: relative;
+    &::after {
+      content: "";
+      width: 8px;
+      height: 8px;
+      transform: translate(-50%, -50%);
+      position: absolute;
+      left: 0;
+      top: 0;
+      border-radius: 50%;
+      background-color: colors.$text;
+    }
+    &::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      transform: translate(-50%, -50%);
+      position: absolute;
+      left: 100%;
+      top: 0;
+      border-radius: 50%;
+      background-color: colors.$text;
+    }
+  }
+  &__button {
+    border: 1px solid colors.$yellow;
+    text-transform: uppercase;
+    color: colors.$text;
+    width: 100%;
+    max-width: 167px;
+    padding: 13px 0;
+    border-radius: 30px;
+    background-color: transparent;
+    &--fill {
+      background-color: colors.$yellow;
+      color: colors.$black;
+    }
+  }
 }
