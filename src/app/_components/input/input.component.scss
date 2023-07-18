@@ -3,7 +3,7 @@
   display: block;
   &.ng-touched.ng-invalid {
     .input__control {
-      border-bottom: 1px solid colors.$errorRed;
+      border: 1px solid colors.$errorRed;
     }
   }
 }
@@ -18,7 +18,7 @@
   &__label {
     position: absolute;
     top: 50%;
-    left: 0px;
+    left: 20px;
     transform: translateY(-50%);
     color: colors.$black;
     color: white;
@@ -45,14 +45,15 @@
     }
   }
   &__control {
-    border-color: transparent;
-    border-bottom: 1px solid colors.$yellow;
-    background-color: transparent;
+    background-color: #3f403f;
+    box-sizing: border-box;
+    border: none;
     outline: none;
+    border-radius: 5px;
     width: 100%;
     color: white;
     font-size: 15px;
-    padding: 15px 0;
+    padding: 15px 20px;
     &:focus ~ .input__label {
       top: 0;
       font-size: 10px;

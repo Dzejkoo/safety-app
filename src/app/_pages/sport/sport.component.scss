@@ -1,0 +1,58 @@
+@use "colors";
+
+.sport {
+  &__title {
+    font-size: 80px;
+    color: white;
+    font-weight: 300;
+  }
+}
+
+.switcher {
+  display: flex;
+  flex-direction: row;
+  padding-top: 30px;
+  gap: 15px;
+  &__label {
+    font-size: 15px;
+    font-weight: 300;
+    color: colors.$text;
+  }
+}
+
+.switch {
+  cursor: pointer;
+  label {
+    background: colors.$text;
+    display: inline-block;
+    height: 20px;
+    width: 45px;
+    cursor: pointer;
+    border-radius: 20px;
+    position: relative;
+    transition: all 0.5s cubic-bezier(0.42, 0, 0.99, 0.58);
+    &:after {
+      position: absolute;
+      z-index: 2;
+      top: 50%;
+      left: 2px;
+      transform: translateY(-50%);
+      content: "";
+      width: 18px;
+      height: 18px;
+      display: block;
+      border-radius: 50%;
+      background-color: colors.$darkBlack;
+      transition: all 0.5s cubic-bezier(0.42, 0, 0, 1.06);
+    }
+  }
+  input[type="checkbox"] {
+    display: none;
+    &:checked + label {
+      background: colors.$yellow;
+      &:after {
+        left: 24px;
+      }
+    }
+  }
+}
