@@ -12,10 +12,13 @@
   gap: 25px;
   &__image {
     width: 100%;
-    height: 369px;
     background-position: center;
     background-size: cover;
     border-radius: 5px;
+    img {
+      width: 100%;
+      height: 100%;
+    }
   }
   &__title {
     display: flex;
