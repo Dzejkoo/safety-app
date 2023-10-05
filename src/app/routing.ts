@@ -8,16 +8,10 @@ import { SingupComponent } from './auth/singup/singup.component';
 import { AuthGuard } from './auth/auth.guard';
 import { LoginGuard } from './auth/login.guard';
 
-const routes: Routes = [
+export const routes: Routes = [
   { path: '', component: MainComponent },
   { path: 'sport', component: SportComponent, canActivate: [AuthGuard] },
   { path: 'medical', component: MedicalComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent, canActivate: [LoginGuard] },
   { path: 'signup', component: SingupComponent, canActivate: [LoginGuard] },
 ];
-
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
-})
-export class AppRoutingModule {}

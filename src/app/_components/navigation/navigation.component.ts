@@ -3,11 +3,15 @@ import { AppComponent } from '../../app.component';
 import { SingupComponent } from '../../auth/singup/singup.component';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/auth/auth-service';
+import { Router, RouterModule } from '@angular/router';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.scss'],
+  imports: [RouterModule, NgIf],
+  standalone: true,
 })
 export class NavigationComponent implements OnInit, OnDestroy {
   constructor(private _authService: AuthService) {}
