@@ -4,8 +4,9 @@ import { AppComponent } from './app/app.component';
 import { provideRouter } from '@angular/router';
 import { routes } from './app/routing';
 import { importProvidersFrom } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, provideHttpClient } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
 
 bootstrapApplication(AppComponent, {
-  providers: [provideRouter(routes), importProvidersFrom(HttpClientModule)],
+  providers: [provideRouter(routes), provideHttpClient()],
 }).catch((e) => console.error(e));

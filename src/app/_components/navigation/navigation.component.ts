@@ -1,7 +1,7 @@
 import { Subscription } from 'rxjs';
 import { AppComponent } from '../../app.component';
 import { SingupComponent } from '../../auth/singup/singup.component';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { AuthService } from 'src/app/auth/auth-service';
 import { Router, RouterModule } from '@angular/router';
 import { NgIf } from '@angular/common';
@@ -14,7 +14,8 @@ import { NgIf } from '@angular/common';
   standalone: true,
 })
 export class NavigationComponent implements OnInit, OnDestroy {
-  constructor(private _authService: AuthService) {}
+  private _authService = inject(AuthService);
+
   isAuth = false;
   authSub: Subscription;
 
