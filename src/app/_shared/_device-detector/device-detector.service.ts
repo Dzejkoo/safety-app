@@ -15,6 +15,7 @@ export class DeviceDetectorService {
     this._deviceType$ = new BehaviorSubject<DeviceType>(this._getInitDevice());
     this.viewMode$ = this._deviceType$.asObservable();
     console.log('test');
+    console.log('test - 2');
   }
 
   private _getInitDevice(): DeviceType {
