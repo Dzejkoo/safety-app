@@ -28,5 +28,6 @@ export class HeaderComponent {
 
   ngOnDestroy() {
     this.subscription$.unsubscribe();
+    console.log('some change');
   }
 }
